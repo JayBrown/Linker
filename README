@@ -33,3 +33,4 @@ linker
 Please note that even the above options will still use the GUI for the user to select the destination directory.
 
 Linker uses a code snippet from StackExchange: https://unix.stackexchange.com/a/85068/222515
+Linker comes bundled with the alisma tool by EclecticLight: https://eclecticlight.co/downloads
