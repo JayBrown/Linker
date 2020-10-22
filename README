@@ -18,7 +18,7 @@ Latest release: https://github.com/JayBrown/Linker/releases/latest
 
 In Finder you can just use the QuickAction from the contextual menu.
 
-On the command-line or for tool integration in file managers like Nimble Commander you will have the following options:
+You will have the following options on the command-line, for tool integration in file managers like Nimble Commander, or via the Touch Bar using BetterTouchTool:
 
 linker
 	-a		:	create Finder alias
