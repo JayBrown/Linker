@@ -14,6 +14,8 @@ Latest release: https://github.com/JayBrown/Linker/releases/latest
 ~/bin
 ~/Developer/bin
 
+* execute the following, if the script doesn't run: chmod +x ./linker
+
 * install QuickAction (workflow) with Automator Installer
 
 In Finder you can just use the QuickAction from the contextual menu.
