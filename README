@@ -1,6 +1,6 @@
 Linker is a macOS shell script and Finder QuickAction to create relative or absolute symbolic links, hard links, Finder aliases, file clones or legacy file copies
 
-Latest release: LINK
+Latest release: https://github.com/JayBrown/Linker/releases/latest
 
 * install linker shell script into your $PATH
 
