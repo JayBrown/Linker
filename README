@@ -1,0 +1,33 @@
+Linker is a macOS shell script and Finder QuickAction to create relative or absolute symbolic links, hard links, Finder aliases, file clones or legacy file copies
+
+Latest release: LINK
+
+* install linker shell script into your $PATH
+
+* supported paths for installation:
+/usr/local/bin
+/opt/local/bin
+/opt/sw/bin
+/sw/bin
+~/.local/bin
+~/local/bin
+~/bin
+~/Developer/bin
+
+* install QuickAction (workflow) with Automator Installer
+
+In Finder you can just use the QuickAction from the contextual menu.
+
+On the command-line or for tool integration in file managers like Nimble Commander you will have the following options:
+
+linker
+	-a		:	create Finder alias
+	-c		:	create cloned file copy (only on APFS)
+	-d		:	create legacy file copy (true duplicate)
+	-h		:	create hard link (only on HFS+ volumes)
+	-r		:	create symbolic link with relative path
+	-s		:	create symbolic link with absolute path
+
+Please note that even the above options will still use the GUI for the user to select the destination directory.
+
+Linker uses a code snippet from StackExchange: https://unix.stackexchange.com/a/85068/222515
