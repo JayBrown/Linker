@@ -1,4 +1,4 @@
-Linker is a macOS shell script and Finder QuickAction to create relative or absolute symbolic links, hard links, Finder aliases, file clones or legacy file copies
+Linker is a macOS shell script and Finder QuickAction to create relative or absolute symbolic links, hard links, Finder aliases, Bookmark files, file clones or legacy file copies
 
 Latest release: https://github.com/JayBrown/Linker/releases/latest
 
@@ -16,14 +16,16 @@ Latest release: https://github.com/JayBrown/Linker/releases/latest
 
 * execute the following, if the script doesn't run: chmod +x ./linker
 
-* install QuickAction (workflow) with Automator Installer
+* Mojave & later: install QuickAction workflow with Automator Installer
+* on older systems the QuickAction format is either not supported or might not work properly as a Service workflow, and you need to create your own Service workflow in Automator
 
-In Finder you can just use the QuickAction from the contextual menu.
+In Finder you can just use the QuickAction from the contextual menu (or the Service on older systems).
 
 You will have the following options on the command-line, for tool integration in file managers like Nimble Commander, or via the Touch Bar using BetterTouchTool:
 
 linker
-	-a		:	create Finder alias
+	-a		:	create Finder Alias
+	-b		:	create Bookmark file (same as Finder Alias on newer systems)
 	-c		:	create cloned file copy (only on APFS)
 	-d		:	create legacy file copy (true duplicate)
 	-h		:	create hard link (only on HFS+ volumes)
@@ -32,5 +34,5 @@ linker
 
 Please note that even the above options will still use the GUI for the user to select the destination directory.
 
-Linker uses a code snippet from StackExchange: https://unix.stackexchange.com/a/85068/222515
+Linker uses a modified code snippet from StackExchange: https://unix.stackexchange.com/a/85068/222515
 Linker comes bundled with the alisma tool by EclecticLight: https://eclecticlight.co/downloads
