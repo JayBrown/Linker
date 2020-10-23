@@ -1,7 +1,7 @@
 #!/bin/zsh
 # shellcheck shell=bash
 
-# Linker v0.2
+# Linker v0.3
 
 export LANG=en_US.UTF-8
 export SYSTEM_VERSION_COMPAT=0
@@ -40,8 +40,8 @@ _relpath () {
     # components may be ".", ".." or a symbolic link
     #
     # returns relative path to $2/$target from $1/$source
-    source=$1
-	target=$2
+    source=$1 # link location
+	target=$2 # original file
 
 	if [[ $(dirname "$source") == $(dirname "$target") ]] ; then
 		result=$(basename "$target")
@@ -86,7 +86,9 @@ _relpath () {
 			result=${forward_part#?}
 		fi
 	fi
-
+	
+	result=$(echo "$result" | sed "s-^\.\./--" 2>/dev/null)
+	
 	printf '%s\n' "$result"
 }
 
