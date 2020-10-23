@@ -1,7 +1,7 @@
 #!/bin/zsh
 # shellcheck shell=bash
 
-# Linker v0.1
+# Linker v0.2
 
 export LANG=en_US.UTF-8
 export SYSTEM_VERSION_COMPAT=0
@@ -41,41 +41,53 @@ _relpath () {
     #
     # returns relative path to $2/$target from $1/$source
     source=$1
-    target=$2
+	target=$2
 
-    common_part=$source
-    result=
+	if [[ $(dirname "$source") == $(dirname "$target") ]] ; then
+		result=$(basename "$target")
+		result=./$result
 
-    while [ "${target#"$common_part"}" = "$target" ]; do
-        # no match, means that candidate common part is not correct
-        # go up one level (reduce common part)
-        common_part=$(dirname "$common_part")
-        # and record that we went back, with correct / handling
-        if [ -z "$result" ]; then
-            result=..
-        else
-            result=../$result
-        fi
-    done
+	else
 
-    if [ "$common_part" = / ]; then
-        # special case for root (no common path)
-        result=$result/
-    fi
+		common_part="$source"
+		result=
+		count=0
+		while [[ "${target#"$common_part"}" = "$target" ]] ; do
+			# no match, means that candidate common part is not correct
+			# go up one level (reduce common part)
+			common_part=$(dirname "$common_part")
+			# and record that we went back, with correct / handling
+			if [[ -z "$result" ]] ; then
+				result=..
+			else
+				result=../$result
+			fi
+			((count++))
+		done
 
-    # since we now have identified the common part,
-    # compute the non-common part
-    forward_part=${target#"$common_part"}
+		if [[ $count -eq 1 ]] ; then
+			result=.
+		fi
 
-    # and now stick all parts together
-    if [ -n "$result" ] && [ -n "$forward_part" ]; then
-        result=$result$forward_part
-    elif [ -n "$forward_part" ]; then
-        # extra slash removal
-        result=${forward_part#?}
-    fi
+		if [[ "$common_part" = / ]] ; then
+			# special case for root (no common path)
+			result=$result/
+		fi
 
-    printf '%s\n' "$result"
+		# since we now have identified the common part,
+		# compute the non-common part
+		forward_part=${target#"$common_part"}
+
+		# and now stick all parts together
+		if [[ -n "$result" ]] && [[ -n "$forward_part" ]] ; then
+			result=$result$forward_part
+		elif [[ -n "$forward_part" ]] ; then
+			# extra slash removal
+			result=${forward_part#?}
+		fi
+	fi
+
+	printf '%s\n' "$result"
 }
 
 # user & home directory
@@ -10445,9 +10457,7 @@ do
 	fi
 	parentdir=$(dirname "$filepath")
 	
-	samedir=false
 	if [[ $parentdir == "$destination" ]] ; then
-		samedir=true
 		if ! $keeptype ; then
 			linkloc="$destination/$filename $identifier"
 		else
@@ -10499,11 +10509,7 @@ do
 	
 	if $symlink ; then
 		if $relative ; then
-			if $samedir ; then
-				relpath="../$filename"
-			else
-				relpath=$(_relpath "$linkloc" "$filepath")
-			fi
+			relpath=$(_relpath "$linkloc" "$filepath")
 			if [[ $relpath ]] ; then
 				ln -h -s "$relpath" "$linkloc" &>/dev/null
 				if ! [[ -L "$linkloc" ]] ; then
