@@ -1,7 +1,7 @@
 #!/bin/zsh
 # shellcheck shell=bash
 
-# Linker v0.4.1
+# Linker v0.4.2
 
 export LANG=en_US.UTF-8
 export SYSTEM_VERSION_COMPAT=0
@@ -3503,7 +3503,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 EOA
-	echo "$alisma64" | base64 -d -o "$bindir/alisma" 2>/dev/null
+	echo "$alisma64" | base64 -D -o "$bindir/alisma" 2>/dev/null
 	xattr -c "$bindir/alisma" 2>/dev/null
 	chmod +x "$bindir/alisma" 2>/dev/null
 fi
@@ -10361,7 +10361,7 @@ dyv2wdYv/RnPPX1uTBLE19LzSK73VFWPt7x+Q0TfC9e6IKKTTSTAipX+eYhz5zvE
 n67sp8m8tRbGmPN8Bg9U1SUxG6O11JvCjRDjxlh321iPwwPJTw0kgD9vfJ6RkeL/
 A9s+zFd7lLfPAAAAAElFTkSuQmCC
 EOI
-	echo "$icon64" | base64 -d -o "$icon_loc" 2>/dev/null
+	echo "$icon64" | base64 -D -o "$icon_loc" 2>/dev/null
 fi
 
 # launched from GUI: select method first
