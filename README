@@ -1,8 +1,7 @@
 Linker is a macOS shell script and Finder QuickAction to create relative or absolute symbolic links, hard links, Finder aliases, Bookmark files, file clones or legacy file copies
 
 Latest release: https://github.com/JayBrown/Linker/releases/latest
-Successfully tested on: macOS 10.15.7 (Catalina)
-Not working on: OS X 10.9.5 (Mavericks)
+Successfully tested on: macOS 10.15.7 (Catalina) & macOS 10.13.6 (High Sierra)
 
 * install linker shell script into your $PATH
 
@@ -19,7 +18,9 @@ Not working on: OS X 10.9.5 (Mavericks)
 * execute the following, if the script doesn't run: chmod +x ./linker
 
 * Mojave & later: install QuickAction workflow with Automator Installer
-* on older systems the QuickAction format is either not supported or might not work properly as a Service workflow, and you need to create your own Service workflow in Automator
+* High Sierra & earlier: install the Service workflow with Automator Installer
+
+* Mojave 10.14.3 and earlier (optional): install the Swift 5 Runtime Support for Command Line Tools: https://support.apple.com/kb/DL1998?locale=en_US
 
 In Finder you can just use the QuickAction from the contextual menu (or the Service on older systems).
 

@@ -1,7 +1,7 @@
 #!/bin/zsh
 # shellcheck shell=bash
 
-# Linker Finder QuickAction (workflow)
+# Linker Finder workflow (QuickAction or Service)
 # version 1.0.1
 
 export LANG=en_US.UTF-8
